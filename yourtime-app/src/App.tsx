@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { Analytics } from '@vercel/analytics/react';
 import { AuthProvider } from './context/AuthContext';
 import { PomodoroProvider } from './context/PomodoroContext';
 import { SettingsProvider } from './context/SettingsContext';
@@ -43,6 +44,7 @@ function App() {
               <Route path="*" element={<Navigate to="/app" replace />} />
             </Routes>
           </BrowserRouter>
+          <Analytics />
         </PomodoroProvider>
       </SettingsProvider>
     </AuthProvider>
