@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* oxide en Windows: el glob recursivo ** falla, y los paths de directorio
+   también. Workaround: enumerar cada subdirectorio con glob no recursivo. */
+@source "../index.html";
+@source "../src/*.tsx";
+@source "../src/*.ts";
+@source "../src/pages/*.tsx";
+@source "../src/components/*.tsx";
+@source "../src/components/Kanban/*.tsx";
+@source "../src/components/Pomodoro/*.tsx";
+@source "../src/components/Heatmap/*.tsx";
+@source "../src/context/*.tsx";
+@source "../src/lib/*.ts";
+
+@theme {
+  --color-yt-bg: #1b1b1b;
+  --color-yt-surface: #232323;
+  --color-yt-border: #2e2e2e;
+  --color-yt-text: #ededed;
+  --color-yt-muted: #9a9a9a;
+
+  --color-heat-0: #1b1b1b;
+  --color-heat-1: #4d84ff;
+  --color-heat-2: #4ddaff;
+  --color-heat-3: #4df4ff;
+  --color-heat-4: #4dff9a;
+  --color-heat-5: #4dff5f;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-yt-bg);
+  color: var(--color-yt-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Esconder los spinners nativos de <input type="number"> */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Scrollbars dark-themed (Chrome/Safari/Edge + Firefox) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-yt-border) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-yt-border);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-yt-muted);
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}

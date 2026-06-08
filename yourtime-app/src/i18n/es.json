@@ -1,0 +1,207 @@
+{
+  "app": {
+    "title": "YourTime"
+  },
+  "auth": {
+    "login": {
+      "title": "Iniciar sesión",
+      "subtitle": "Bienvenido de vuelta.",
+      "noAccount": "¿No tienes cuenta?",
+      "createOne": "Crear una"
+    },
+    "signup": {
+      "title": "Crear cuenta",
+      "subtitle": "Empieza a vencer la procrastinación.",
+      "haveAccount": "¿Ya tienes cuenta?",
+      "signIn": "Iniciar sesión",
+      "confirmTitle": "¡Cuenta creada!",
+      "confirmBody": "Revisa <strong>{{email}}</strong> y confirma. Después",
+      "confirmLink": "inicia sesión"
+    },
+    "fields": {
+      "name": "Nombre",
+      "namePlaceholder": "Tu nombre",
+      "email": "Email",
+      "emailPlaceholder": "tu@email.com",
+      "password": "Contraseña",
+      "passwordPlaceholder": "••••••••",
+      "passwordHint": "Mínimo 6 caracteres."
+    },
+    "actions": {
+      "signIn": "Ingresar",
+      "signInLoading": "Ingresando…",
+      "signUp": "Crear cuenta",
+      "signUpLoading": "Creando…"
+    }
+  },
+  "sidebar": {
+    "today": "Hoy",
+    "streak": "Racha",
+    "streakSingular": "día consecutivo",
+    "streakPlural": "días consecutivos",
+    "streakNone": "comienza tu primera",
+    "soundOn": "Silenciar",
+    "soundOff": "Activar sonido",
+    "settings": "Ajustes",
+    "logout": "Cerrar sesión",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "board": {
+    "newActivity": "+ Nueva actividad",
+    "loading": "Cargando actividades…",
+    "moveError": "No se pudo mover la actividad.",
+    "columns": {
+      "todo": "To-Do",
+      "in_progress": "In Progress",
+      "done": "Done"
+    },
+    "column": {
+      "dropHere": "Suelta una actividad aquí"
+    },
+    "card": {
+      "habit": "Hábito",
+      "task": "Tarea",
+      "pomodoroSingular": "pomodoro",
+      "pomodoroPlural": "pomodoros",
+      "edit": "Editar actividad"
+    }
+  },
+  "activityModal": {
+    "createTitle": "Nueva actividad",
+    "editTitle": "Editar actividad",
+    "typeUnique": "Tarea única",
+    "typeUniqueHint": "Se archiva al terminar",
+    "typeHabit": "Hábito",
+    "typeHabitHint": "Se reinicia cada día",
+    "typeImmutable": "el tipo no se puede cambiar",
+    "fields": {
+      "title": "Título",
+      "titlePlaceholder": "Ej: Repasar inglés 20 min",
+      "description": "Descripción (opcional)",
+      "descriptionPlaceholder": "Detalle, contexto, próximos pasos…",
+      "weekdays": "Días de la semana"
+    },
+    "errors": {
+      "titleRequired": "El título es obligatorio.",
+      "habitNeedsDay": "Selecciona al menos un día para el hábito.",
+      "habitNeedsDayEdit": "Un hábito necesita al menos un día.",
+      "saveFailed": "No se pudo guardar.",
+      "deleteFailed": "No se pudo eliminar.",
+      "createFailed": "No se pudo crear."
+    },
+    "actions": {
+      "cancel": "Cancelar",
+      "create": "Crear",
+      "save": "Guardar",
+      "delete": "🗑 Eliminar",
+      "deleteConfirm": "¿Confirmar eliminación?"
+    },
+    "typeLabel": "Tipo:"
+  },
+  "pomodoro": {
+    "phases": {
+      "idle": "Listo",
+      "focus": "Focus",
+      "short_break": "Descanso",
+      "long_break": "Descanso largo",
+      "awaiting_continuation": "Descanso terminado"
+    },
+    "idleHelper": "Arrastra una actividad a <bold>In Progress</bold> para iniciar un bloque de focus.",
+    "workingOn": "Trabajando en:",
+    "continueWith": "¿Continuar con <bold>{{title}}</bold>?",
+    "closesIn": "Cierra en {{seconds}}s",
+    "paused": "Pausado",
+    "actions": {
+      "pause": "Pausar",
+      "resume": "Reanudar",
+      "skip": "Saltar fase",
+      "cancel": "Cancelar",
+      "continue": "▶ Continuar",
+      "done": "✕ Listo"
+    },
+    "notif": {
+      "permissionEnabled": "Notificaciones activadas",
+      "permissionBody": "YourTime te avisará al terminar cada bloque.",
+      "focusEndedTitle": "Focus terminado",
+      "focusEndedBody": "{{minutes}} min de descanso. Respira.",
+      "longBreakTitle": "¡{{cycle}}° focus! Descanso largo",
+      "longBreakBody": "{{minutes}} min de descanso largo. Bien hecho.",
+      "breakEndedTitle": "Descanso terminado",
+      "breakEndedBody": "Decide si quieres continuar o cerrar."
+    }
+  },
+  "heatmap": {
+    "title": "{{count}} actividad completada en {{year}}",
+    "title_plural": "{{count}} actividades completadas en {{year}}",
+    "loading": "Cargando historial…",
+    "less": "menos",
+    "more": "más",
+    "tooltipWith": "{{date}} · {{done}}/{{planned}} ({{pct}}%)",
+    "tooltipNone": "{{date}} · sin datos"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "tabs": {
+      "pomodoro": "Pomodoro",
+      "notif": "Notificaciones",
+      "account": "Cuenta"
+    },
+    "pomodoro": {
+      "intro": "Cambia las duraciones del ciclo Pomodoro. Los cambios aplican al próximo bloque.",
+      "focusMin": "Duración del focus (minutos)",
+      "shortBreakMin": "Descanso corto (minutos)",
+      "longBreakMin": "Descanso largo (minutos)",
+      "blocksUntilLong": "Focus por ciclo (cuántos antes del descanso largo)",
+      "rangeHint": "mín {{min}} · máx {{max}}",
+      "restore": "↺ Restaurar 25 · 5 · 30 · 4"
+    },
+    "notif": {
+      "soundLabel": "Sonido al completar una actividad",
+      "soundHint": "Ding suave al pasar a Done.",
+      "browserLabel": "Notificaciones del navegador",
+      "browserHint": "Aviso al terminar focus o descanso, incluso con la pestaña en segundo plano.",
+      "browserUnsupported": "No soportado por el browser",
+      "browserGranted": "✓ Activadas",
+      "browserDenied": "Bloqueadas (revisar config del browser)",
+      "browserActivate": "Activar"
+    },
+    "account": {
+      "email": "Email",
+      "currentName": "Nombre actual:",
+      "noName": "(sin definir)",
+      "newName": "Nuevo nombre",
+      "newPassword": "Nueva contraseña (mín. 6)",
+      "save": "Guardar",
+      "nameUpdated": "Nombre actualizado.",
+      "passwordUpdated": "Contraseña actualizada.",
+      "nameFailed": "No se pudo guardar el nombre.",
+      "passwordFailed": "No se pudo cambiar la contraseña.",
+      "noSession": "Sin sesión activa.",
+      "dangerZone": "Zona peligrosa",
+      "deleteNotice": "La eliminación de cuenta aún no está disponible desde la app. Para borrar tus datos, contacta a soporte."
+    },
+    "language": {
+      "label": "Idioma",
+      "es": "Español",
+      "en": "English"
+    },
+    "timezone": {
+      "label": "Zona horaria",
+      "hint": "Detectada automáticamente del navegador. El cierre del día corre a tu medianoche local."
+    }
+  },
+  "days": {
+    "short": ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"],
+    "letter": ["L", "M", "M", "J", "V", "S", "D"]
+  },
+  "months": {
+    "short": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+  },
+  "common": {
+    "loading": "Cargando…",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "close": "Cerrar"
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "app": {
+    "title": "YourTime"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in",
+      "subtitle": "Welcome back.",
+      "noAccount": "Don't have an account?",
+      "createOne": "Create one"
+    },
+    "signup": {
+      "title": "Create account",
+      "subtitle": "Start beating procrastination.",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "confirmTitle": "Account created!",
+      "confirmBody": "Check <strong>{{email}}</strong> and confirm. Then",
+      "confirmLink": "sign in"
+    },
+    "fields": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "you@email.com",
+      "password": "Password",
+      "passwordPlaceholder": "••••••••",
+      "passwordHint": "Minimum 6 characters."
+    },
+    "actions": {
+      "signIn": "Sign in",
+      "signInLoading": "Signing in…",
+      "signUp": "Create account",
+      "signUpLoading": "Creating…"
+    }
+  },
+  "sidebar": {
+    "today": "Today",
+    "streak": "Streak",
+    "streakSingular": "day in a row",
+    "streakPlural": "days in a row",
+    "streakNone": "start your first one",
+    "soundOn": "Mute",
+    "soundOff": "Unmute",
+    "settings": "Settings",
+    "logout": "Sign out",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "board": {
+    "newActivity": "+ New activity",
+    "loading": "Loading activities…",
+    "moveError": "Could not move the activity.",
+    "columns": {
+      "todo": "To-Do",
+      "in_progress": "In Progress",
+      "done": "Done"
+    },
+    "column": {
+      "dropHere": "Drop an activity here"
+    },
+    "card": {
+      "habit": "Habit",
+      "task": "Task",
+      "pomodoroSingular": "pomodoro",
+      "pomodoroPlural": "pomodoros",
+      "edit": "Edit activity"
+    }
+  },
+  "activityModal": {
+    "createTitle": "New activity",
+    "editTitle": "Edit activity",
+    "typeUnique": "One-off task",
+    "typeUniqueHint": "Archived when done",
+    "typeHabit": "Habit",
+    "typeHabitHint": "Resets every day",
+    "typeImmutable": "type cannot be changed",
+    "fields": {
+      "title": "Title",
+      "titlePlaceholder": "e.g. Review English 20 min",
+      "description": "Description (optional)",
+      "descriptionPlaceholder": "Detail, context, next steps…",
+      "weekdays": "Days of the week"
+    },
+    "errors": {
+      "titleRequired": "Title is required.",
+      "habitNeedsDay": "Pick at least one day for the habit.",
+      "habitNeedsDayEdit": "A habit needs at least one day.",
+      "saveFailed": "Could not save.",
+      "deleteFailed": "Could not delete.",
+      "createFailed": "Could not create."
+    },
+    "actions": {
+      "cancel": "Cancel",
+      "create": "Create",
+      "save": "Save",
+      "delete": "🗑 Delete",
+      "deleteConfirm": "Confirm deletion?"
+    },
+    "typeLabel": "Type:"
+  },
+  "pomodoro": {
+    "phases": {
+      "idle": "Ready",
+      "focus": "Focus",
+      "short_break": "Break",
+      "long_break": "Long break",
+      "awaiting_continuation": "Break ended"
+    },
+    "idleHelper": "Drag an activity to <bold>In Progress</bold> to start a focus block.",
+    "workingOn": "Working on:",
+    "continueWith": "Continue with <bold>{{title}}</bold>?",
+    "closesIn": "Closes in {{seconds}}s",
+    "paused": "Paused",
+    "actions": {
+      "pause": "Pause",
+      "resume": "Resume",
+      "skip": "Skip phase",
+      "cancel": "Cancel",
+      "continue": "▶ Continue",
+      "done": "✕ Done"
+    },
+    "notif": {
+      "permissionEnabled": "Notifications enabled",
+      "permissionBody": "YourTime will notify you when each block ends.",
+      "focusEndedTitle": "Focus ended",
+      "focusEndedBody": "{{minutes}} min break. Breathe.",
+      "longBreakTitle": "{{cycle}}th focus! Long break",
+      "longBreakBody": "{{minutes}} min long break. Well done.",
+      "breakEndedTitle": "Break ended",
+      "breakEndedBody": "Decide whether to continue or close."
+    }
+  },
+  "heatmap": {
+    "title": "{{count}} activity completed in {{year}}",
+    "title_plural": "{{count}} activities completed in {{year}}",
+    "loading": "Loading history…",
+    "less": "less",
+    "more": "more",
+    "tooltipWith": "{{date}} · {{done}}/{{planned}} ({{pct}}%)",
+    "tooltipNone": "{{date}} · no data"
+  },
+  "settings": {
+    "title": "Settings",
+    "tabs": {
+      "pomodoro": "Pomodoro",
+      "notif": "Notifications",
+      "account": "Account"
+    },
+    "pomodoro": {
+      "intro": "Change the Pomodoro cycle durations. Changes apply to the next block.",
+      "focusMin": "Focus duration (minutes)",
+      "shortBreakMin": "Short break (minutes)",
+      "longBreakMin": "Long break (minutes)",
+      "blocksUntilLong": "Focuses per cycle (how many before the long break)",
+      "rangeHint": "min {{min}} · max {{max}}",
+      "restore": "↺ Restore 25 · 5 · 30 · 4"
+    },
+    "notif": {
+      "soundLabel": "Sound when completing an activity",
+      "soundHint": "Soft ding when moved to Done.",
+      "browserLabel": "Browser notifications",
+      "browserHint": "Alert when focus or break ends, even with the tab in the background.",
+      "browserUnsupported": "Not supported by the browser",
+      "browserGranted": "✓ Enabled",
+      "browserDenied": "Blocked (check browser settings)",
+      "browserActivate": "Enable"
+    },
+    "account": {
+      "email": "Email",
+      "currentName": "Current name:",
+      "noName": "(not set)",
+      "newName": "New name",
+      "newPassword": "New password (min. 6)",
+      "save": "Save",
+      "nameUpdated": "Name updated.",
+      "passwordUpdated": "Password updated.",
+      "nameFailed": "Could not save the name.",
+      "passwordFailed": "Could not change the password.",
+      "noSession": "No active session.",
+      "dangerZone": "Danger zone",
+      "deleteNotice": "Account deletion is not yet available from the app. To remove your data, contact support."
+    },
+    "language": {
+      "label": "Language",
+      "es": "Español",
+      "en": "English"
+    },
+    "timezone": {
+      "label": "Timezone",
+      "hint": "Auto-detected from your browser. The daily close runs at your local midnight."
+    }
+  },
+  "days": {
+    "short": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    "letter": ["M", "T", "W", "T", "F", "S", "S"]
+  },
+  "months": {
+    "short": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  },
+  "common": {
+    "loading": "Loading…",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close"
+  }
+}

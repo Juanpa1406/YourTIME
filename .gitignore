@@ -1,0 +1,173 @@
+
+# Nada de lo listado aquí debe entrar al repositorio.
+# Si añades una nueva dependencia o herramienta que produzca
+# artefactos locales, súmalos a este archivo en el mismo PR.
+# ============================================================
+
+# -------------------------
+# Variables de entorno
+# -------------------------
+# NUNCA commitear ningún .env real. Solo .env.example está permitido.
+.env
+.env.*
+!.env.example
+
+# -------------------------
+# Lockfiles de otros gestores (defensa en profundidad)
+# -------------------------
+# pnpm es el único gestor permitido en este proyecto.
+# Si alguien ejecuta `npm install` o `yarn install` por error,
+# el lockfile resultante no debe contaminar el repositorio.
+# El único lockfile permitido es pnpm-lock.yaml.
+package-lock.json
+yarn.lock
+npm-shrinkwrap.json
+
+# -------------------------
+# Dependencias
+# -------------------------
+node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# -------------------------
+# Build de Next.js
+# -------------------------
+.next/
+out/
+build/
+dist/
+
+# -------------------------
+# Vercel
+# -------------------------
+.vercel
+
+# -------------------------
+# TypeScript
+# -------------------------
+*.tsbuildinfo
+next-env.d.ts
+
+# -------------------------
+# Testing
+# -------------------------
+coverage/
+.nyc_output/
+playwright-report/
+playwright/.cache/
+test-results/
+blob-report/
+
+# -------------------------
+# Logs
+# -------------------------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+logs/
+
+# -------------------------
+# Prisma
+# -------------------------
+# El cliente generado se reconstruye con `prisma generate`.
+# No commitear binarios ni artefactos generados.
+prisma/generated/
+
+# -------------------------
+# Archivos del SO
+# -------------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# -------------------------
+# Editores e IDEs
+# -------------------------
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.shared.json
+.idea/
+*.swp
+*.swo
+*~
+
+# -------------------------
+# Uploads / temporales locales
+# -------------------------
+uploads/
+tmp/
+temp/
+*.tmp
+
+# -------------------------
+# Husky (la carpeta .husky/ SÍ se commitea,
+# pero las instalaciones locales no)
+# -------------------------
+.husky/_/
+
+# -------------------------
+# Misc
+# -------------------------
+.cache/
+.parcel-cache/
+.eslintcache
+*.pem
+*.local
+
+# -------------------------
+# Supabase CLI (artefactos locales)
+# -------------------------
+# El CLI crea estos al hacer `supabase login` o `supabase link`.
+# Contienen project_ref / organization_id — no debe ir al repo.
+**/.temp/
+**/.branches/
+**/supabase/.temp/
+**/supabase/.branches/
+
+# -------------------------
+# Llaves y certificados (defensa en profundidad)
+# -------------------------
+*.key
+*.crt
+*.p12
+*.pfx
+*.cer
+*.der
+
+# -------------------------
+# Service account JSONs (Google Cloud, Firebase, AWS, etc.)
+# -------------------------
+service-account*.json
+*-service-account.json
+firebase-adminsdk*.json
+**/credentials.json
+**/credentials/
+
+# -------------------------
+# Carpetas comunes de secretos
+# -------------------------
+secrets/
+private/
+keys/
+
+# -------------------------
+# direnv (variables de entorno auto-cargadas)
+# -------------------------
+.envrc
+.envrc.local
+
+
+# Documentación interna de seguridad
+SECURITY.md
+arquitectura.md
+CLAUDE.md
+IMPLEMENTATION_TASKS.md
+requerimentos.md
+SECURITY_CHECKLIST.md
