@@ -15,6 +15,7 @@
     "@dnd-kit/utilities": "^3.2.2",
     "@supabase/supabase-js": "^2.107.0",
     "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "i18next": "^26.3.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
