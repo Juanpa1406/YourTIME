@@ -2,6 +2,10 @@ import { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Analytics } from '@vercel/analytics/react';
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
+// Vercel Speed Insights — modo imperativo (la variante /react tiene bugs con React 19)
+injectSpeedInsights();
 import { AuthProvider } from './context/AuthContext';
 import { PomodoroProvider } from './context/PomodoroContext';
 import { SettingsProvider } from './context/SettingsContext';
