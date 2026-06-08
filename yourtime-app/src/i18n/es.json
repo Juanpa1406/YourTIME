@@ -179,7 +179,7 @@
       "passwordFailed": "No se pudo cambiar la contraseña.",
       "noSession": "Sin sesión activa.",
       "dangerZone": "Zona peligrosa",
-      "deleteNotice": "La eliminación de cuenta aún no está disponible desde la app. Para borrar tus datos, contacta a soporte."
+      "deleteNotice": "Aún estamos trabajando para que puedas eliminar tu cuenta directamente desde la app. Mientras tanto, si deseas borrar tus datos de YourTIME, escríbenos a support@yourtimeapp.me y con gusto lo haremos por ti."
     },
     "language": {
       "label": "Idioma",

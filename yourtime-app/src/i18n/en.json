@@ -179,7 +179,7 @@
       "passwordFailed": "Could not change the password.",
       "noSession": "No active session.",
       "dangerZone": "Danger zone",
-      "deleteNotice": "Account deletion is not yet available from the app. To remove your data, contact support."
+      "deleteNotice": "We're still working on in-app account deletion. If you'd like to remove your data from YourTIME, please reach out to support@yourtimeapp.me and we'll gladly help you."
     },
     "language": {
       "label": "Language",
