@@ -1,44 +1,202 @@
-![Banner de YourTime](./docs/1-banner.jpg)
+![YourTime banner](./docs/1-banner.jpg)
 
-# Introduction
+<h1 align="center">YourTime</h1>
 
-**YourTIME** is an advanced visual productivity and habit-tracking system designed for all types of users who want to take full control of their daily routines, optimize their time, and overcome procrastination. Unlike boring traditional to-do lists, this platform transforms discipline into an interactive and visual experience through a minimalist, dark-mode interface.
+<p align="center">
+  <strong>Plan your day. Master your focus. Build your streak.</strong><br>
+  A visual productivity and habit-tracking SPA that combines a dynamic Kanban,
+  an automatic Pomodoro and a yearly consistency heatmap — all in one dark-mode web app.
+</p>
 
-## Main Features and Operating Logic
+<p align="center">
+  <a href="https://yourtimeapp.me"><img alt="Live" src="https://img.shields.io/badge/Live-yourtimeapp.me-4d84ff?style=flat-square"></a>
+  <img alt="React" src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white">
+  <img alt="Vite" src="https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-6-3178C6?style=flat-square&logo=typescript&logoColor=white">
+  <img alt="Tailwind" src="https://img.shields.io/badge/Tailwind-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white">
+  <img alt="Supabase" src="https://img.shields.io/badge/Supabase-Postgres-3FCF8E?style=flat-square&logo=supabase&logoColor=white">
+  <img alt="Vercel" src="https://img.shields.io/badge/Hosted_on-Vercel-000?style=flat-square&logo=vercel&logoColor=white">
+</p>
 
-- Smart Kanban Board (Activity Differentiation)
-The daily workflow is managed through an interactive visual board with three classic columns: To-Do, In Progress, and Done. The system optimizes the interface by conceptually separating two types of workflows:
+---
 
-    1. Cyclical Habits: Recurring activities (e.g., reading for 25 minutes) that the user schedules for specific days of the week (e.g., every Monday and Tuesday). They have an automatic nightly reset system that, at midnight, checks for the new day, clears their status, and automatically returns them to the To-Do column. Habits that do not correspond to the current day are hidden to keep the board clean and free of clutter.
+## Live demo
 
-    2. One-Time Tasks: Specific tasks or pending items assigned for the current day or the following day (e.g., submitting a report). When moved to Done, they are permanently archived at the end of the day and do not return to the board.
+**[yourtimeapp.me](https://yourtimeapp.me)** — Currently free and open to new users.
 
-- Automated and Real-Time Pomodoro Timer
-Designed as the ultimate anti-procrastination tool, its operation is fully integrated with the user's actions:
+![Dashboard preview](./yourtime-app/public/preview.png)
 
-    1. Drag Activation: By moving any card (habit or task) to the In Progress column, the system immediately activates a 25-minute automated focus block directly linked to that activity.
+---
 
-    2. Structured Work Cycle (25/5/30 Rule): When the 25-minute focus block expires, the timer automatically activates a short 5-minute break. After completing four consecutive focus blocks, the system grants a longer 30-minute break.
-    3. Efficiency Metrics: If the user is highly efficient and moves the card to the Done column before the 25-minute timer expires, the system immediately validates the task, and that time is positively counted toward the heat map metrics, rewarding the user's speed.
+## What it does
 
-- Visual Engine: Consistency Heat Map
-Inspired by the activity grids of development platforms, this is the motivational and psychological core of the application. Each completed habit and focus interval illuminates an interactive annual chart on the screen.
-Unlike traditional maps, this one has its own visual identity based on percentages of daily productivity achieved and transitions from dark tones to neon blues and greens:
+YourTime turns daily discipline into a visual, interactive experience. It's built around three tools that talk to each other:
 
-  1. 0% (Inactive Day/No Logs): Dark Gray.
+### 1. Dynamic Kanban Board
 
-  2. 1% to 20% completed: Royal Blue.
+Three columns (`To-Do` / `In Progress` / `Done`) with drag-and-drop, separating two distinct workflows:
 
-  3. 21% to 40% completed: Sky Blue.
+- **One-Time Tasks** — Specific to-dos for today (e.g., *"Submit the report"*). When moved to Done, they're archived at the end of the day and don't come back.
+- **Cyclical Habits** — Recurring activities (e.g., *"Read for 25 minutes"*) scheduled for specific weekdays. At midnight (local timezone, per user), the system automatically clears their status and returns them to To-Do. Habits not scheduled for today stay hidden to keep the board clean.
 
-  4. 41% to 60% completed: Turquoise.
+### 2. Automatic Pomodoro Timer
 
-  5. 61% to 80% completed: Mint Green.
+The anti-procrastination engine, tightly integrated with the board:
 
-  6. 81% to 100% completed: Neon Green.
+- **Drag-to-start** — Moving any card to `In Progress` instantly starts a 25-minute focus block linked to that activity.
+- **25 / 5 / 30 cycle** — Configurable. Focus → short break. Every fourth focus → long break.
+- **Efficiency tracking** — Finishing a task before the 25-minute timer expires counts toward the heatmap with positive bias.
+- **Browser notifications** — Optional, opt-in from Settings only.
 
-![Diseño de la barra de tareas](./docs/barra-de-tareas.png)
+### 3. Yearly Consistency Heatmap
 
-## Gamification Mechanics and User Experience (UX)
+GitHub-style annual grid showing your daily completion percentage. Five shades transitioning from royal blue to neon green based on `% completed`:
 
-Streak Freeze Protection: A "shield" system (Duolingo style) that allows the user to protect their annual consistency on the heat map during difficult days, emergencies, or illness, avoiding the frustration of losing a perfect streak.
+| % daily | Color |
+|---|---|
+| 0 (inactive) | Dark gray |
+| 1 – 20 | Royal blue |
+| 21 – 40 | Sky blue |
+| 41 – 60 | Turquoise |
+| 61 – 80 | Mint green |
+| 81 – 100 | Neon green |
+
+A nightly `pg_cron` job (per-user timezone-aware) consolidates each day at the user's local midnight and feeds the heatmap.
+
+---
+
+## Bonus features
+
+- **Bilingual** — Full Spanish + English UI with one-click toggle. Auto-detects from browser on first visit.
+- **Streak counter** — Days in a row with at least one completed activity. The current day stays neutral until midnight (no false breaks).
+- **Browser notifications** — Optional, configurable from Settings, never prompted unsolicited.
+- **Per-user timezone** — Auto-detected from browser, syncs to DB. Daily close runs at your local midnight, wherever you are.
+- **Branded transactional emails** — Signup confirmation, password reset, magic links and account notifications come from a custom domain (`support@yourtimeapp.me`) via Resend + Supabase SMTP.
+
+---
+
+## Tech stack
+
+| Layer | Tech |
+|---|---|
+| Frontend | React 19 · Vite 8 · TypeScript 6 · Tailwind CSS v4 |
+| State | React Context API |
+| Routing | react-router-dom v7 |
+| Drag-and-drop | @dnd-kit |
+| i18n | react-i18next + i18next |
+| Backend | Supabase (Postgres + Auth + pg_cron) |
+| Email | Resend (SMTP through Supabase Auth) |
+| Hosting | Vercel |
+| Analytics | Vercel Analytics + Speed Insights |
+| Package manager | pnpm (exclusive) |
+
+**Security posture**: 100% access through Supabase SDK, RLS enforced on every table, `SECURITY DEFINER` functions hardened with explicit `REVOKE`, CSP + HSTS + X-Frame-Options + Permissions-Policy at the edge.
+
+---
+
+## Run locally
+
+### Prerequisites
+- Node.js 20+
+- `pnpm` (this project is pnpm-only — other lockfiles are blocked by `.gitignore`)
+- A Supabase project (free tier works)
+
+### Setup
+
+```bash
+git clone https://github.com/Juanpa1406/YourTIME.git
+cd YourTIME/yourtime-app
+pnpm install
+cp .env.example .env.local
+# Edit .env.local with your Supabase URL + anon key
+pnpm dev
+```
+
+Visit `http://localhost:5173`.
+
+### Environment variables
+
+| Variable | Where to find it | Required |
+|---|---|---|
+| `VITE_SUPABASE_URL` | Supabase Dashboard → Project Settings → API → Project URL | Yes |
+| `VITE_SUPABASE_ANON_KEY` | Same screen → `anon public` key | Yes |
+
+> **Never** put `SERVICE_ROLE_KEY` in `.env.local` or any `VITE_*` variable. It would ship to the browser bundle. The service role key is server-only.
+
+### Database setup
+
+Run the 7 SQL migrations from `supabase/migrations/` in order, using the SQL Editor in your Supabase Dashboard:
+
+```
+0001_init.sql              → tables, enums, triggers, indexes
+0002_rls.sql               → Row Level Security policies
+0003_cierre_diario.sql     → daily-close cron function (superseded by 0007)
+0004_security_fixes.sql    → REVOKE hardening + length CHECK
+0005_atomic_increment.sql  → atomic pomodoro counter RPC
+0006_cron_cdmx.sql         → CDMX-anchored cron schedule (superseded by 0007)
+0007_per_user_timezone.sql → per-user timezone + hourly cron loop
+```
+
+---
+
+## Project structure
+
+```
+YourTime/
+├── docs/                       Assets and (private) design docs
+├── supabase/migrations/        SQL schema, RLS, functions, cron
+└── yourtime-app/               Vite app (deployed root for Vercel)
+    ├── public/                 Static assets (logo, favicon, preview)
+    └── src/
+        ├── components/         UI components (AppShell, Sidebar, modals, Kanban, Pomodoro, Heatmap)
+        ├── context/            AuthContext, SettingsContext, PomodoroContext
+        ├── i18n/               Spanish + English translation files
+        ├── lib/                Supabase client, sound helpers, generated DB types
+        ├── pages/              Landing, Login, Signup, Dashboard
+        └── services/           Data access layer (no UI, just SDK calls)
+```
+
+---
+
+## Roadmap
+
+Features explored or planned for future iterations:
+
+- **Streak Freeze** — Duolingo-style shield to protect annual consistency during illness, emergencies or travel days.
+- **Weekly analytics per activity** — Per-habit progress charts.
+- **In-app account deletion** — Currently handled manually via `support@yourtimeapp.me`.
+- **Magic link sign-in** — Templates already designed and connected, UI button pending.
+- **Multi-device realtime sync** — Pomodoro state is per-device today.
+
+---
+
+## Credits
+
+Built solo, with **Claude** (Anthropic's AI assistant) acting as pair programmer throughout. Claude helped with: implementing UI components from sketches and screenshots, diagnosing bugs (e.g., notification-permission heuristics flagged by Malwarebytes, streak-calculation edge case during mid-day card moves), security auditing via the Cyber Neo skill, designing the HTML email templates, security headers (CSP + HSTS) in `vercel.json`, and copywriting (landing, emails, this README).
+
+All product, design and architectural decisions were made by the author. Commits where Claude contributed code are tagged with `Co-Authored-By: Claude Opus 4.7 <noreply@anthropic.com>` in the commit footer for full traceability.
+
+---
+
+## Author
+
+[**@Juanpa1406**](https://github.com/Juanpa1406)  
+Software Engineering student at ITESO · Guadalajara, México
+
+[GitHub](https://github.com/Juanpa1406) · [yourtimeapp.me](https://yourtimeapp.me) · [support@yourtimeapp.me](mailto:support@yourtimeapp.me)
+
+I led this project end-to-end: product decisions, architecture, UI/UX, deployment and security hardening. Implementation was pair-programmed with AI — see [Credits](#credits) for the breakdown.
+
+---
+
+## Support & feedback
+
+- **Help / report bugs / feature requests**: [support@yourtimeapp.me](mailto:support@yourtimeapp.me)
+- **Issues**: open a [GitHub issue](https://github.com/Juanpa1406/YourTIME/issues)
+
+---
+
+## License
+
+No license added yet — code is © 2026 Juan Pablo Zepeda Orozco. All rights reserved.
+*A permissive license (MIT) may be added in a future release.*
