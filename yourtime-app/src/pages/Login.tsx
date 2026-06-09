@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
 import AuthShell from '../components/AuthShell';
 import TextField from '../components/TextField';
@@ -68,6 +68,20 @@ export default function Login() {
         <Link to="/signup" className="text-heat-2 hover:text-heat-3 transition-colors">
           {t('auth.login.createOne')}
         </Link>
+      </p>
+
+      <p className="text-xs text-yt-muted mt-4 text-center">
+        <Trans
+          i18nKey="auth.login.needHelp"
+          components={{
+            supportLink: (
+              <a
+                href="mailto:support@yourtimeapp.me"
+                className="text-heat-2 hover:text-heat-3 transition-colors"
+              />
+            ),
+          }}
+        />
       </p>
     </AuthShell>
   );

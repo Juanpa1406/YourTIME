@@ -103,6 +103,20 @@ export default function Signup() {
           {t('auth.signup.signIn')}
         </Link>
       </p>
+
+      <p className="text-xs text-yt-muted mt-4 text-center">
+        <Trans
+          i18nKey="auth.signup.needHelp"
+          components={{
+            supportLink: (
+              <a
+                href="mailto:support@yourtimeapp.me"
+                className="text-heat-2 hover:text-heat-3 transition-colors"
+              />
+            ),
+          }}
+        />
+      </p>
     </AuthShell>
   );
 }

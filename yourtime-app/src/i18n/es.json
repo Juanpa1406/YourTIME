@@ -7,7 +7,8 @@
       "title": "Iniciar sesión",
       "subtitle": "Bienvenido de vuelta.",
       "noAccount": "¿No tienes cuenta?",
-      "createOne": "Crear una"
+      "createOne": "Crear una",
+      "needHelp": "¿Problemas para acceder? Escríbenos a <supportLink>support@yourtimeapp.me</supportLink>"
     },
     "signup": {
       "title": "Crear cuenta",
@@ -16,7 +17,8 @@
       "signIn": "Iniciar sesión",
       "confirmTitle": "¡Cuenta creada!",
       "confirmBody": "Revisa <strong>{{email}}</strong> y confirma. Después",
-      "confirmLink": "inicia sesión"
+      "confirmLink": "inicia sesión",
+      "needHelp": "¿Problemas para registrarte? Escríbenos a <supportLink>support@yourtimeapp.me</supportLink>"
     },
     "fields": {
       "name": "Nombre",

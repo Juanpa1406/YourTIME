@@ -7,7 +7,8 @@
       "title": "Sign in",
       "subtitle": "Welcome back.",
       "noAccount": "Don't have an account?",
-      "createOne": "Create one"
+      "createOne": "Create one",
+      "needHelp": "Trouble signing in? Email us at <supportLink>support@yourtimeapp.me</supportLink>"
     },
     "signup": {
       "title": "Create account",
@@ -16,7 +17,8 @@
       "signIn": "Sign in",
       "confirmTitle": "Account created!",
       "confirmBody": "Check <strong>{{email}}</strong> and confirm. Then",
-      "confirmLink": "sign in"
+      "confirmLink": "sign in",
+      "needHelp": "Trouble signing up? Email us at <supportLink>support@yourtimeapp.me</supportLink>"
     },
     "fields": {
       "name": "Name",
