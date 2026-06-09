@@ -87,7 +87,11 @@ export function computeTodayStats(
  * Reglas:
  *   - Día sin actividades planificadas → NEUTRAL (no cuenta, no rompe la racha)
  *   - Día con planificadas y al menos 1 completada → cuenta +1
- *   - Día con planificadas y 0 completadas → ROMPE la racha
+ *   - Día cerrado (ayer y anteriores) con planificadas y 0 completadas → ROMPE la racha
+ *   - HOY con planificadas y 0 completadas → NEUTRAL (el día sigue en curso).
+ *     La racha solo se "consolida" como rota cuando el cron cierra el día a
+ *     medianoche local. Mientras el día corre, sacar una card de Done no debe
+ *     borrar la racha del día anterior.
  *   - Se camina hacia atrás hasta encontrar el primer "rompe" o 365 días.
  *
  * @param historial filas del usuario (puede incluir o no la del día actual)
@@ -129,8 +133,11 @@ export function computeStreak(
       // Día sin plans → no cuenta y tampoco rompe
     } else if (pct > 0) {
       streak += 1;
+    } else if (isToday) {
+      // Hoy todavía no terminó: no cuenta, pero tampoco rompe. El día se
+      // "consolida" solo cuando el cron cierra a medianoche local.
     } else {
-      break; // tenía plans y 0 completadas → racha cortada
+      break; // día cerrado con plans y 0 completadas → racha cortada
     }
 
     cursor.setDate(cursor.getDate() - 1);
