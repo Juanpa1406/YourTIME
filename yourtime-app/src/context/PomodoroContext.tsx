@@ -342,7 +342,13 @@ export function PomodoroProvider({ children }: { children: ReactNode }) {
   // ---- API pública ----
   const startFocus = useCallback(
     (actividadId: string) => {
-      ensureNotificationPermission().catch(() => undefined);
+      // NO pedimos Notification.requestPermission() acá: arrastrar una card a
+      // "In Progress" no es semánticamente "activar notificaciones" y los
+      // antivirus (Malwarebytes ID 10008) + browsers modernos (Chrome quiet UI,
+      // Safari) flaggean este patrón como abuso. El permiso se solicita SOLO
+      // desde el botón "Activar" en Settings → Notificaciones (user gesture
+      // explícito y semánticamente relacionado). Si el permiso no fue otorgado,
+      // notify() skipea silenciosamente y el Pomodoro corre igual.
       setState({
         phase: 'focus',
         endsAt: Date.now() + durations.focusMs,

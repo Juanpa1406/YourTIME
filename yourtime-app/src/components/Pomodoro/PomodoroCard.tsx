@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import {
-  usePomodoro,
-  ensureNotificationPermission,
-  getNotificationPermission,
-  type Phase,
-} from '../../context/PomodoroContext';
+import { usePomodoro, type Phase } from '../../context/PomodoroContext';
 import { supabase } from '../../lib/supabase';
 
 const PHASE_COLOR: Record<Phase, string> = {
@@ -46,9 +41,6 @@ export default function PomodoroCard() {
   } = usePomodoro();
 
   const [tituloActiva, setTituloActiva] = useState<string | null>(null);
-  const [notifPerm, setNotifPerm] = useState<NotificationPermission | 'unsupported'>(
-    () => getNotificationPermission(),
-  );
 
   // Cargar título de la actividad activa cuando cambia
   useEffect(() => {
@@ -75,27 +67,16 @@ export default function PomodoroCard() {
 
   return (
     <div className="bg-yt-surface border border-yt-border rounded-2xl p-5 flex flex-col h-full min-h-[200px]">
-      {/* Badge de fase */}
-      <div className="flex items-center justify-between mb-3">
+      {/* Badge de fase. La activación de notificaciones vive SOLO en
+          Settings → Notificaciones para evitar prompts side-effect que
+          disparan heurísticas anti-spam de AVs y browsers modernos. */}
+      <div className="mb-3">
         <span
           className={`text-[10px] uppercase tracking-wider font-semibold px-2 py-1 rounded ${PHASE_COLOR[phase]}`}
         >
           {phaseLabel(phase)}
           {phase === 'focus' && cycleCount > 0 && ` · ${cycleCount + 1}°`}
         </span>
-
-        {notifPerm === 'default' && !isIdle && (
-          <button
-            type="button"
-            onClick={async () => {
-              const ok = await ensureNotificationPermission();
-              setNotifPerm(ok ? 'granted' : getNotificationPermission());
-            }}
-            className="text-[10px] px-2 py-0.5 rounded border border-heat-1/40 text-heat-2 hover:bg-heat-1/10"
-          >
-            🔔
-          </button>
-        )}
       </div>
 
       {/* Countdown grande */}
