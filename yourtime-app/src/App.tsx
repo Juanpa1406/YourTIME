@@ -10,6 +10,7 @@ import { AuthProvider } from './context/AuthContext';
 import { PomodoroProvider } from './context/PomodoroContext';
 import { SettingsProvider } from './context/SettingsContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
@@ -34,7 +35,7 @@ function App() {
           <HtmlLangSync />
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Navigate to="/app" replace />} />
+              <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route
@@ -45,7 +46,9 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="*" element={<Navigate to="/app" replace />} />
+              {/* Cualquier ruta desconocida vuelve a la landing (no a /app
+                  para no bloquear usuarios sin sesión en un loop a /login). */}
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </BrowserRouter>
           <Analytics />

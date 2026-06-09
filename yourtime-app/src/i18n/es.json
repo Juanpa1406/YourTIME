@@ -2,7 +2,43 @@
   "app": {
     "title": "YourTime"
   },
+  "landing": {
+    "langToggle": {
+      "label": "Selector de idioma",
+      "toEs": "Cambiar a español",
+      "toEn": "Cambiar a inglés"
+    },
+    "hero": {
+      "headline1": "Organiza tu día.",
+      "headline2": "Domina tu enfoque.",
+      "headline3": "Construye tu racha.",
+      "subhead": "Un tablero Kanban dinámico, un Pomodoro automático y un mapa de consistencia estilo GitHub. Todo en una app web ligera y en dark mode.",
+      "ctaPrimary": "Crear cuenta gratis",
+      "ctaSecondary": "Iniciar sesión",
+      "previewAlt": "Dashboard de YourTime con tablero Kanban, temporizador Pomodoro y mapa de calor"
+    },
+    "features": {
+      "kanban": {
+        "title": "Kanban dinámico",
+        "desc": "Tres columnas (To-Do / In Progress / Done) con drag-and-drop. Separa tareas únicas de hábitos cíclicos que se reinician solos cada día."
+      },
+      "pomodoro": {
+        "title": "Pomodoro automático",
+        "desc": "Arranca solo al arrastrar una card a In Progress. Configura focus, descanso corto y largo a tu medida."
+      },
+      "heatmap": {
+        "title": "Mapa de consistencia",
+        "desc": "Mapa de calor anual estilo GitHub. Mira tu racha de días consecutivos y tu progreso a lo largo del año."
+      }
+    },
+    "footer": {
+      "contact": "¿Preguntas o sugerencias? Escríbenos a <supportLink>support@yourtimeapp.me</supportLink>"
+    }
+  },
   "auth": {
+    "shell": {
+      "back": "Volver al inicio"
+    },
     "login": {
       "title": "Iniciar sesión",
       "subtitle": "Bienvenido de vuelta.",

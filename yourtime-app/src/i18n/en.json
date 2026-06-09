@@ -2,7 +2,43 @@
   "app": {
     "title": "YourTime"
   },
+  "landing": {
+    "langToggle": {
+      "label": "Language selector",
+      "toEs": "Switch to Spanish",
+      "toEn": "Switch to English"
+    },
+    "hero": {
+      "headline1": "Plan your day.",
+      "headline2": "Master your focus.",
+      "headline3": "Build your streak.",
+      "subhead": "A dynamic Kanban board, an automatic Pomodoro, and a GitHub-style consistency heatmap. All in one lightweight, dark-mode web app.",
+      "ctaPrimary": "Create free account",
+      "ctaSecondary": "Sign in",
+      "previewAlt": "YourTime dashboard with Kanban board, Pomodoro timer and heatmap"
+    },
+    "features": {
+      "kanban": {
+        "title": "Dynamic Kanban",
+        "desc": "Three columns (To-Do / In Progress / Done) with drag-and-drop. Keep one-off tasks separate from daily habits that reset themselves."
+      },
+      "pomodoro": {
+        "title": "Automatic Pomodoro",
+        "desc": "Starts on its own when you drag a card to In Progress. Customize focus, short break, and long break to your liking."
+      },
+      "heatmap": {
+        "title": "Consistency heatmap",
+        "desc": "GitHub-style yearly heatmap. Track your streak of consecutive days and see your progress over the year."
+      }
+    },
+    "footer": {
+      "contact": "Questions or feedback? Email us at <supportLink>support@yourtimeapp.me</supportLink>"
+    }
+  },
   "auth": {
+    "shell": {
+      "back": "Back to home"
+    },
     "login": {
       "title": "Sign in",
       "subtitle": "Welcome back.",
