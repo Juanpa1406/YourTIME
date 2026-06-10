@@ -39,6 +39,12 @@ type AuthContextValue = {
   signOut: () => Promise<void>;
   /** Re-fetchea el profile desde DB. Llamar tras actualizar el nombre. */
   refreshProfile: () => Promise<void>;
+  /** Envía email con link de recuperación al user. NO revela si el email
+   *  existe (anti-enumeration): Supabase responde OK en ambos casos. */
+  resetPasswordForEmail: (email: string) => Promise<AuthResult>;
+  /** Actualiza la contraseña del usuario en sesión activa (sea sesión normal
+   *  o sesión de recuperación tras click en email link). */
+  updatePassword: (newPassword: string) => Promise<AuthResult>;
 };
 
 const AuthContext = createContext<AuthContextValue | undefined>(undefined);
@@ -143,6 +149,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         await supabase.auth.signOut();
       },
       refreshProfile,
+      resetPasswordForEmail: async (email) => {
+        // redirectTo apunta a /reset-password en el origen actual.
+        // Funciona en dev (localhost:5173) y prod (yourtimeapp.me).
+        // Ambos están en la whitelist de Redirect URLs de Supabase Auth.
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: `${window.location.origin}/reset-password`,
+        });
+        return { error };
+      },
+      updatePassword: async (newPassword) => {
+        const { error } = await supabase.auth.updateUser({ password: newPassword });
+        return { error };
+      },
     }),
     [session, loading, profile, refreshProfile],
   );

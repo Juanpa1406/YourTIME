@@ -44,7 +44,29 @@
       "subtitle": "Welcome back.",
       "noAccount": "Don't have an account?",
       "createOne": "Create one",
+      "forgotPassword": "Forgot your password?",
       "needHelp": "Trouble signing in? Email us at <supportLink>support@yourtimeapp.me</supportLink>"
+    },
+    "forgot": {
+      "title": "Forgot your password?",
+      "subtitle": "We'll send you a link to reset it.",
+      "send": "Send recovery email",
+      "sendingLoading": "Sending…",
+      "sentTitle": "Check your inbox",
+      "sentBody": "If an account exists with that email, we sent you a link to reset your password. The link expires shortly.",
+      "backToLogin": "Back to sign in"
+    },
+    "reset": {
+      "title": "Set a new password",
+      "subtitle": "Almost done — choose your new password.",
+      "newPassword": "New password",
+      "update": "Update password",
+      "updatingLoading": "Updating…",
+      "passwordTooShort": "Password must be at least 6 characters.",
+      "invalidTitle": "Invalid or expired link",
+      "invalidSubtitle": "This recovery link is no longer valid.",
+      "invalidBody": "The link may have expired or already been used. Request a new one to continue.",
+      "requestNew": "Request a new link"
     },
     "signup": {
       "title": "Create account",

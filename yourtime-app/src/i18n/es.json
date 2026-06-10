@@ -44,7 +44,29 @@
       "subtitle": "Bienvenido de vuelta.",
       "noAccount": "¿No tienes cuenta?",
       "createOne": "Crear una",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
       "needHelp": "¿Problemas para acceder? Escríbenos a <supportLink>support@yourtimeapp.me</supportLink>"
+    },
+    "forgot": {
+      "title": "Recuperar contraseña",
+      "subtitle": "Te enviaremos un enlace para restablecerla.",
+      "send": "Enviar correo de recuperación",
+      "sendingLoading": "Enviando…",
+      "sentTitle": "Revisa tu bandeja",
+      "sentBody": "Si existe una cuenta con ese correo, te enviamos un enlace para restablecer tu contraseña. El enlace expira pronto.",
+      "backToLogin": "Volver a iniciar sesión"
+    },
+    "reset": {
+      "title": "Establece una nueva contraseña",
+      "subtitle": "Casi listo — elige tu nueva contraseña.",
+      "newPassword": "Nueva contraseña",
+      "update": "Actualizar contraseña",
+      "updatingLoading": "Actualizando…",
+      "passwordTooShort": "La contraseña debe tener al menos 6 caracteres.",
+      "invalidTitle": "Enlace inválido o expirado",
+      "invalidSubtitle": "Este enlace de recuperación ya no es válido.",
+      "invalidBody": "El enlace puede haber expirado o ya haber sido usado. Solicita uno nuevo para continuar.",
+      "requestNew": "Solicitar un nuevo enlace"
     },
     "signup": {
       "title": "Crear cuenta",
