@@ -38,7 +38,7 @@ export default function ActivityCard({ actividad, overlay = false, onEdit }: Pro
         (overlay
           ? 'shadow-2xl shadow-black/60 ring-1 ring-heat-1/30 rotate-1'
           : 'hover:border-yt-muted ') +
-        (isDragging && !overlay ? 'opacity-30' : '')
+        (isDragging && !overlay ? 'opacity-0' : '')
       }
     >
       {/* Botón ⋯ en hover. stopPropagation evita que el drag se active. */}

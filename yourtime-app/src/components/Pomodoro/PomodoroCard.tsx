@@ -109,12 +109,20 @@ export default function PomodoroCard() {
           )}{/* workingOn label trimmed for compactness */}
           <div className="flex items-center justify-center gap-2">
             {paused ? (
-              <ControlBtn onClick={resume} title={t('pomodoro.actions.resume')}>▶</ControlBtn>
+              <ControlBtn onClick={resume} title={t('pomodoro.actions.resume')}>
+                <PlayIcon />
+              </ControlBtn>
             ) : (
-              <ControlBtn onClick={pause} title={t('pomodoro.actions.pause')}>⏸</ControlBtn>
+              <ControlBtn onClick={pause} title={t('pomodoro.actions.pause')}>
+                <PauseIcon />
+              </ControlBtn>
             )}
-            <ControlBtn onClick={skip} title={t('pomodoro.actions.skip')}>⏭</ControlBtn>
-            <ControlBtn onClick={stop} title={t('pomodoro.actions.cancel')} danger>✕</ControlBtn>
+            <ControlBtn onClick={skip} title={t('pomodoro.actions.skip')}>
+              <SkipIcon />
+            </ControlBtn>
+            <ControlBtn onClick={stop} title={t('pomodoro.actions.cancel')} danger>
+              <CloseIcon />
+            </ControlBtn>
           </div>
           {paused && (
             <p className="text-[10px] text-yt-muted text-center">{t('pomodoro.paused')}</p>
@@ -176,7 +184,7 @@ function ControlBtn({
       title={title}
       aria-label={title}
       className={
-        'w-10 h-10 rounded-lg text-base leading-none border-2 transition-all flex items-center justify-center shadow-sm ' +
+        'w-10 h-10 rounded-lg border-2 transition-all flex items-center justify-center shadow-sm ' +
         (danger
           ? 'bg-red-600 border-red-500 text-white hover:bg-red-500 hover:border-red-400'
           : 'bg-yt-bg border-yt-border text-yt-text hover:border-heat-2 hover:shadow-md hover:shadow-heat-1/10')
@@ -184,5 +192,86 @@ function ControlBtn({
     >
       {children}
     </button>
+  );
+}
+
+// -----------------------------------------------------------------------------
+// Icons SVG inline (Lucide/Feather style). Heredan color via currentColor para
+// que en el ControlBtn normal se vean blancos y en el danger (rojo) tambien
+// blancos sin codigo extra.
+// -----------------------------------------------------------------------------
+
+function PlayIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <polygon points="6 4 20 12 6 20 6 4" />
+    </svg>
+  );
+}
+
+function PauseIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <rect x="6" y="4" width="4" height="16" rx="1" />
+      <rect x="14" y="4" width="4" height="16" rx="1" />
+    </svg>
+  );
+}
+
+function SkipIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <polygon points="5 4 15 12 5 20 5 4" />
+      <rect x="17" y="4" width="2.5" height="16" rx="0.5" />
+    </svg>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
   );
 }
