@@ -83,7 +83,25 @@
     "settings": "Ajustes",
     "logout": "Cerrar sesión",
     "openMenu": "Abrir menú",
-    "closeMenu": "Cerrar menú"
+    "closeMenu": "Cerrar menú",
+    "manageActivities": "Gestionar actividades"
+  },
+  "manageActivities": {
+    "title": "Gestionar actividades",
+    "habits": "Hábitos",
+    "tasks": "Tareas",
+    "empty": "Aún no tienes actividades creadas. Crea una desde el botón \"+ Nueva actividad\".",
+    "loading": "Cargando…",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "confirmDelete": "¿Eliminar?",
+    "cancelDelete": "Cancelar",
+    "deleteFailed": "No se pudo eliminar.",
+    "status": {
+      "todo": "To-Do",
+      "in_progress": "In Progress",
+      "done": "Done"
+    }
   },
   "board": {
     "newActivity": "+ Nueva actividad",

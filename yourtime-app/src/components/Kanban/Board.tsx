@@ -95,6 +95,20 @@ export default function Board({ onActividadesChange }: Props = {}) {
     };
   }, []);
 
+  // Re-fetch cuando algún componente externo modifica actividades.
+  // Hoy lo dispara ManageActivitiesModal tras editar / eliminar; mismo patrón
+  // que `yt:sound-changed` del hook useSoundEnabled. Evita pasar callbacks
+  // a través de varios niveles de componentes.
+  useEffect(() => {
+    const handler = () => {
+      listForToday()
+        .then((data) => setActividades(data))
+        .catch(() => undefined);
+    };
+    window.addEventListener('yt:activities-changed', handler);
+    return () => window.removeEventListener('yt:activities-changed', handler);
+  }, []);
+
   const handleCreated = (a: Actividad) => {
     if (!isVisibleToday(a)) return;
     setActividades((prev) => [a, ...prev]);

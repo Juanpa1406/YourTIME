@@ -83,7 +83,25 @@
     "settings": "Settings",
     "logout": "Sign out",
     "openMenu": "Open menu",
-    "closeMenu": "Close menu"
+    "closeMenu": "Close menu",
+    "manageActivities": "Manage activities"
+  },
+  "manageActivities": {
+    "title": "Manage activities",
+    "habits": "Habits",
+    "tasks": "Tasks",
+    "empty": "You haven't created any activities yet. Create one from the \"+ New activity\" button.",
+    "loading": "Loading…",
+    "edit": "Edit",
+    "delete": "Delete",
+    "confirmDelete": "Delete?",
+    "cancelDelete": "Cancel",
+    "deleteFailed": "Could not delete.",
+    "status": {
+      "todo": "To-Do",
+      "in_progress": "In Progress",
+      "done": "Done"
+    }
   },
   "board": {
     "newActivity": "+ New activity",

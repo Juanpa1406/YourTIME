@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useSoundEnabled } from '../lib/sounds';
 import Logo from './Logo';
 import SettingsModal from './SettingsModal';
+import ManageActivitiesModal from './ManageActivitiesModal';
 
 type Props = {
   /** Para cerrar el drawer en mobile al hacer click en algo. */
@@ -17,6 +18,7 @@ export default function Sidebar({ onItemClick, extras }: Props) {
   const { user, profile, signOut } = useAuth();
   const { enabled: soundEnabled, toggle: toggleSound } = useSoundEnabled();
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [manageOpen, setManageOpen] = useState(false);
 
   // Prioridad: profile.nombre → fallback email
   const displayName = profile?.nombre?.trim() || user?.email || '';
@@ -47,6 +49,18 @@ export default function Sidebar({ onItemClick, extras }: Props) {
 
       {/* Widgets (stats, navegación) inyectados desde el page */}
       {extras}
+
+      {/* Manage activities — abre modal con TODAS las actividades no archivadas,
+          incluyendo hábitos cuyo día no es hoy (caso de uso: borrar/editar
+          algo que todavía no apareció en el board). */}
+      <button
+        type="button"
+        onClick={() => setManageOpen(true)}
+        className="mt-3 w-full px-3 py-2 rounded-lg text-sm text-yt-muted hover:text-yt-text hover:bg-yt-bg/40 transition-colors flex items-center gap-2"
+      >
+        <ListIcon />
+        <span className="truncate">{t('sidebar.manageActivities')}</span>
+      </button>
 
       <div className="flex-1" />
 
@@ -104,6 +118,7 @@ export default function Sidebar({ onItemClick, extras }: Props) {
       </div>
 
       <SettingsModal open={settingsOpen} onClose={() => setSettingsOpen(false)} />
+      <ManageActivitiesModal open={manageOpen} onClose={() => setManageOpen(false)} />
     </aside>
   );
 }
@@ -168,6 +183,30 @@ function SettingsIcon() {
     >
       <circle cx="12" cy="12" r="3" />
       <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </svg>
+  );
+}
+
+/** Tres líneas horizontales con bullets, usado en el botón Manage activities. */
+function ListIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <line x1="8" y1="6" x2="21" y2="6" />
+      <line x1="8" y1="12" x2="21" y2="12" />
+      <line x1="8" y1="18" x2="21" y2="18" />
+      <line x1="3" y1="6" x2="3.01" y2="6" />
+      <line x1="3" y1="12" x2="3.01" y2="12" />
+      <line x1="3" y1="18" x2="3.01" y2="18" />
     </svg>
   );
 }
