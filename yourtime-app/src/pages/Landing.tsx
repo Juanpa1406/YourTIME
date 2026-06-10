@@ -12,6 +12,21 @@ export default function Landing() {
   const { t } = useTranslation();
   const { session, loading } = useAuth();
 
+  // Si Supabase nos mandó acá con un token de recovery en el hash (cuando
+  // su Dashboard ignora nuestro redirectTo y usa el Site URL como fallback),
+  // redirigimos manualmente a /reset-password preservando el hash. El SDK
+  // de Supabase parsea el hash al cargar /reset-password y deja la sesión
+  // de recovery lista para que el form de cambio de contraseña aparezca.
+  if (
+    typeof window !== 'undefined' &&
+    window.location.hash.includes('type=recovery')
+  ) {
+    window.location.replace(
+      '/reset-password' + window.location.search + window.location.hash,
+    );
+    return null;
+  }
+
   if (loading) return null;
   if (session) return <Navigate to="/app" replace />;
 

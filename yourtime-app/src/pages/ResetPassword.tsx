@@ -26,11 +26,40 @@ export default function ResetPassword() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
-    // getSession() es síncrono respecto al estado interno del cliente; el
-    // URL fragment ya fue parseado al instanciar createClient.
+    // Check inicial: leer la sesión actual. Si el URL fragment ya fue parseado
+    // al instanciar createClient, esto trae la sesión de recovery directo.
     supabase.auth.getSession().then(({ data: { session } }) => {
-      setHasSession(!!session);
+      if (session) setHasSession(true);
+      else {
+        // Fallback: si todavía no hay sesión, esperamos al evento
+        // PASSWORD_RECOVERY que Supabase dispara cuando termina de parsear el
+        // URL fragment del email link. Le damos un tiempo prudente antes de
+        // declarar el link inválido para evitar falsos negativos por race.
+        const timeoutId = window.setTimeout(() => {
+          setHasSession((current) => (current === null ? false : current));
+        }, 1500);
+        return () => window.clearTimeout(timeoutId);
+      }
     });
+
+    // Listener: el evento PASSWORD_RECOVERY se dispara una vez que Supabase
+    // procesó el token del URL fragment. Esto es lo que garantiza que el form
+    // aparezca incluso si la primera lectura de getSession() vino vacía.
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'PASSWORD_RECOVERY' && session) {
+        setHasSession(true);
+      } else if (event === 'SIGNED_IN' && session) {
+        // Algunos flujos disparan SIGNED_IN en vez de PASSWORD_RECOVERY si
+        // la sesión ya estaba activa antes del click; igual permitimos el
+        // cambio de password.
+        setHasSession(true);
+      }
+    });
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   // Mientras chequeamos la sesión, no mostramos nada (evita flicker).
