@@ -4,7 +4,8 @@ import {
   DndContext,
   DragOverlay,
   KeyboardSensor,
-  PointerSensor,
+  MouseSensor,
+  TouchSensor,
   useSensor,
   useSensors,
   type DragEndEvent,
@@ -62,10 +63,15 @@ export default function Board({ onActividadesChange }: Props = {}) {
   const [editing, setEditing] = useState<Actividad | null>(null);
   const pomodoro = usePomodoro();
 
-  // Sensores: mouse/touch con umbral de 5px (evita drags accidentales en click);
-  // teclado con defaults (space para agarrar, flechas para mover).
+  // Sensores separados por tipo de input:
+  // - MouseSensor: drag inicia tras moverse 5px (evita drags accidentales en click).
+  // - TouchSensor: hold de 250ms con tolerancia 5px → distingue tap, scroll y
+  //   long-press-drag. Sin esto el PointerSensor confunde el scroll con drag
+  //   en móvil/iPad y bloquea el scroll vertical de la página.
+  // - KeyboardSensor: defaults (space para agarrar, flechas para mover).
   const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(MouseSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 250, tolerance: 5 } }),
     useSensor(KeyboardSensor),
   );
 
